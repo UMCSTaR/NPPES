@@ -46,7 +46,7 @@ npi_selecct_vars = data.table::fread("X:\\George_Surgeon_Projects/Other/NPPES_Da
                                 select = c('NPI','Provider Credential Text','Healthcare Provider Taxonomy Code_1','Entity Type Code'))
 
 npi_taxonomy_individual = npi_selecct_vars %>% 
-  filter('Entity Type Code' ==1) %>%  # individual
+  filter(`Entity Type Code` == 1) %>%  # individual
   left_join(taxonomy, by = c('Healthcare Provider Taxonomy Code_1' = 'PROVIDER TAXONOMY CODE'))  
 
 data.table::fwrite(npi_taxonomy_individual, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npi_taxonomy_individual.csv" )  
