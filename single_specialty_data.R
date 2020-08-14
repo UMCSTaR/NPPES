@@ -5,6 +5,7 @@ npidata_select <-
     "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_20050523-20200112.csv",
     select = c(
       'NPI',
+      'Entity Type Code',
       'Provider Last Name (Legal Name)',
       'Provider First Name',
       'Provider Middle Name',
