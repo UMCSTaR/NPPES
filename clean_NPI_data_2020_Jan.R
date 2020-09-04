@@ -46,4 +46,4 @@ npidata_md = npidata_individual_active %>%
   filter(str_detect(credential, 'MD'))
 
 
-fwrite(npidata_md, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.rdata")
+fwrite(npidata_md, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.csv")
