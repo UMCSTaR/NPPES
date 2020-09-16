@@ -40,10 +40,16 @@ fwrite(npidata_individual_active, file = "X:\\George_Surgeon_Projects/Other/NPPE
 
 
 # save MD NPI ----
-npidata_md = npidata_individual_active %>%
+load("/Volumes/George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var.rdata")
+
+npidata_individual = npidata_pfile_2020_selected_var %>%
+  mutate(credential = str_replace_all(`Provider Credential Text`, "[^[:alpha:]]", "")) %>% 
+  filter(`Entity Type Code` == 1) 
+
+npidata_md = npidata_individual %>%
   # 1. clean credential for MD or any credential with "MD" 
   mutate(credential = str_replace_all(`Provider Credential Text`, "[^[:alpha:]]", "")) %>% 
   filter(str_detect(credential, 'MD'))
 
+fwrite(npidata_md, file = "/Volumes/George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.csv")
 
-fwrite(npidata_md, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.rdata")
