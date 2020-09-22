@@ -3,28 +3,30 @@ library(readr)
 library(tidyext)
 library(data.table)
 
-## import data ##
+## import data 
 npidata_pfile_2020 <- fread("X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_20050523-20200112.csv")
 
-# select 
+## select 
 npidata_pfile_2020_selected_var = npidata_pfile_2020 %>% 
   select('NPI',
          `Entity Type Code`,
          'Provider Last Name (Legal Name)', 
          'Provider First Name',
          'Provider Middle Name', 
+         'Provider Name Suffix Text',
          'Provider Gender Code',
          'Provider License Number_1' ,
          'Provider License Number State Code_1',
          'Provider Credential Text',
          'Healthcare Provider Taxonomy Code_1',
-          contains("Deactivation"))
+         contains("Deactivation"))
 
 
 npidata_pfile_2020_selected_var = npidata_pfile_2020_selected_var %>% 
-   rename(first_name = `Provider First Name`,
-          last_name = `Provider Last Name (Legal Name)`,
-          middle_name = `Provider Middle Name`)
+  rename(first_name = `Provider First Name`,
+         last_name = `Provider Last Name (Legal Name)`,
+         middle_name = `Provider Middle Name`,
+         suffix = `Provider Name Suffix Text`)
 
 save(npidata_pfile_2020_selected_var, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var.rdata")
 
@@ -51,5 +53,5 @@ npidata_md = npidata_individual %>%
   mutate(credential = str_replace_all(`Provider Credential Text`, "[^[:alpha:]]", "")) %>% 
   filter(str_detect(credential, 'MD'))
 
-fwrite(npidata_md, file = "/Volumes/George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.csv")
+fwrite(npidata_md, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var_md.csv")
 
