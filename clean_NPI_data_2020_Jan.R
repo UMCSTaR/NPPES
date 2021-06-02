@@ -62,7 +62,8 @@ fwrite(npidata_md, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemin
 taxonomy <- readr::read_csv("CROSSWALK_MEDICARE_PROVIDER_SUPPLIER_to_HEALTHCARE_PROVIDER_TAXONOMY.csv")
 
 taxonomy_gs = taxonomy %>%
-  filter(`MEDICARE SPECIALTY CODE` == "02") 
+  filter(`MEDICARE SPECIALTY CODE` == "02",
+         `PROVIDER TAXONOMY CODE` == "208600000X") 
 
 anyDuplicated(taxonomy_gs$`PROVIDER TAXONOMY CODE`)
   
