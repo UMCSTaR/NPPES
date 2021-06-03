@@ -27,7 +27,7 @@ npidata_pfile_2020_selected_var = npidata_pfile_2020_selected_var %>%
          middle_name = `Provider Middle Name`,
          suffix = `Provider Name Suffix Text`)
 
-# save(npidata_pfile_2020_selected_var, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var.rdata")
+# fwrite(npidata_pfile_2020_selected_var, file = "X:\\George_Surgeon_Projects/Other/NPPES_Data_Dissemination_January_2020/npidata_pfile_2020_selected_var.csv")
 
 # 2. Individual -------
 npidata_individual = npidata_pfile_2020_selected_var %>%
